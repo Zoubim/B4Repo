@@ -51,3 +51,27 @@ let movieList = new Movie(`list`, initialList);
 
 console.log("B4.3 Unsorted movie array:");
 console.log(movieList);
+
+/**
+ * ----------------
+ * B4.4 - Sort the array by movieId in ascending order
+ * -----------------
+ */
+
+/**
+ * sortByMovieId
+ * Returns a new array of movies ordered by movieId
+ * @param inputArray - movie list array unorder
+ * @returns {sortedArray} - a new array in ascending movieId order
+ * Will need to specify to the function to order it by movieId
+ */
+function sortByMovieId(inputArray) {
+    const sortedArray = [...inputArray];
+    sortedArray.sort(function (a, b) {
+        return a.movieId - b.movieId;
+    });
+    return sortedArray;
+}
+const sortedMovies = sortByMovieId(initialList);
+console.log("B4.4 Movie array sorted by movieId:");
+console.log(sortedMovies);
