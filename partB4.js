@@ -75,3 +75,39 @@ function sortByMovieId(inputArray) {
 const sortedMovies = sortByMovieId(initialList);
 console.log("B4.4 Movie array sorted by movieId:");
 console.log(sortedMovies);
+
+
+/**
+ * -----------
+ * B4.5 - Search algorithm (sequential or binary)
+ * -----------
+ */
+
+/**
+ * binarySearch
+ * Searches a movie array that is already sorted by movieId by
+ * halving the search range. 
+ * @param searchArray - array of movies sorted by movieId
+ * @param {number} targetId - movieId being searched for
+ * @returns matching movie or null if not found
+ */
+
+function binarySearch(searchArray, targetId) {
+    let lowI = 0;
+    let highI = searchArray.length - 1;
+    while (lowI <= highI) {
+        const middleI = Math.floor((lowI + highI)/2);
+        if (searchArray[middleI].movieId === targetId) {
+            return searchArray[middleI];
+        }
+        if (searchArray[middleI].movieId < targetId) {
+            lowI = middleI + 1;
+        } else {
+            highI = middleI - 1;
+        }
+    }
+    return null;
+}
+
+console.log("B4.5 Search for movie ID 115 (found)    :", binarySearch(sortedMovies, 115));
+console.log("B4.5 Search for movie ID 500 (not found):", binarySearch(sortedMovies, 500));
